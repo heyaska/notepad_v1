@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Memo </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+        h1 {
+            text-align: left;
+            color: #000000;
+            margin-left: 20px;
+            font-style: bold;
+        }
+        h2 {
+            text-align: left;
+            color: #000000;
+            margin-left: 20px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        } 
+        textarea {
+            resize: none;
+            padding: 10px;
+            background-color: #222222;
+            font-size: 16px;
+            border: 1px solid #222222;
+            border-radius: 5px;
+            width: 96%;
+            height: 700px;
+            color: #ffffff;    
+        }
+    </style>
+</head>
+<body>
+    <h1> TO-DO LIST </h1>
+    <h2> [Project] [Task] [Action] </h2>   
+    <form>
+        <textarea type="text" ID="myTextarea"></textarea>
+    </form>
+</body>
+    <script>
+		
+        window.onload = loadMemo;
+
+        let timer;
+        timer = setInterval(saveMemo, 1000)
+
+        function saveMemo() {
+			var memo = document.getElementById("myTextarea").value;
+			localStorage.setItem("memo", memo);
+		}
+
+		function loadMemo() {
+			var memo = localStorage.getItem("memo");
+			document.getElementById("myTextarea").value = memo;
+
+		}
+	</script>
+
+</html>
